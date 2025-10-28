@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMasters - Presentación de Marca Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.3s ease;
+        }
+
+        .slide:hover {
+            background: rgba(0, 212, 255, 0.01);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            font-size: 0.85rem;
+            color: #666;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Title Slide */
+        .title-slide {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            text-align: center;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .title-main {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title-sub {
+            font-size: 1.3rem;
+            color: #888;
+            font-weight: 300;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .module-info {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #00d4ff;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            transition: all 0.3s ease;
+        }
+
+        .module-info:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: #0066ff;
+            animation: expandWidth 1s ease-out;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            color: #00d4ff;
+        }
+
+        /* Debate Section */
+        .debate-intro {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 40px;
+            max-width: 900px;
+        }
+
+        .debate-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .debate-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 35px;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .debate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .debate-card:hover::before {
+            left: 100%;
+        }
+
+        .debate-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .debate-card h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .debate-card:hover h4 {
+            color: #00d4ff;
+        }
+
+        .debate-card p {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .debate-card:hover p {
+            color: #ccc;
+        }
+
+        /* DAFO Analysis */
+        .dafo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .dafo-section {
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid;
+            padding: 40px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dafo-section:hover {
+            background: rgba(255,255,255,0.04);
+            transform: translateX(5px);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .dafo-section.strengths {
+            border-color: #00d4ff;
+        }
+
+        .dafo-section.strengths:hover {
+            box-shadow: -5px 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .dafo-section.weaknesses {
+            border-color: #ff6b6b;
+        }
+
+        .dafo-section.weaknesses:hover {
+            box-shadow: -5px 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .dafo-section.opportunities {
+            border-color: #4ecdc4;
+        }
+
+        .dafo-section.opportunities:hover {
+            box-shadow: -5px 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .dafo-section.threats {
+            border-color: #ffd93d;
+        }
+
+        .dafo-section.threats:hover {
+            box-shadow: -5px 0 20px rgba(255, 217, 61, 0.3);
+        }
+
+        .dafo-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .dafo-section:hover h3 {
+            transform: translateX(5px);
+        }
+
+        .dafo-section ul {
+            list-style: none;
+        }
+
+        .dafo-section li {
+            padding: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+
+        .dafo-section li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .dafo-section:hover li::before {
+            color: #00d4ff;
+        }
+
+        .dafo-section li:hover {
+            color: #fff;
+            padding-left: 30px;
+        }
+
+        /* Value Proposition */
+        .value-box {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 60px;
+            border-radius: 8px;
+            margin: 40px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .value-box:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .value-box h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 300;
+        }
+
+        .value-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        .linkedin-profile {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 50px;
+            border-radius: 8px;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-profile:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .linkedin-profile h4 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #00d4ff;
+            font-weight: 400;
+        }
+
+        .linkedin-profile p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        .profile-header {
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Brand Section */
+        .brand-identity {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .brand-logo-display {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 50px;
+            background: rgba(0, 212, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            letter-spacing: -2px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .brand-logo-display:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .brand-name {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .brand-tagline {
+            font-size: 1.5rem;
+            color: #888;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 70px;
+        }
+
+        /* Competencies */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .competency-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            text-align: center;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competency-item::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 5rem;
+            color: rgba(0, 212, 255, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .competency-item:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .competency-item:hover {
+            background: rgba(0, 212, 255, 0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .competency-item h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .competency-item:hover h4 {
+            color: #00d4ff;
+        }
+
+        .competency-item p {
+            color: #888;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Visibility Strategy */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .strategy-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .strategy-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.2);
+        }
+
+        .strategy-card h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #00d4ff;
+            transition: transform 0.3s ease;
+        }
+
+        .strategy-card:hover h4 {
+            transform: translateX(5px);
+        }
+
+        .strategy-detail {
+            margin: 15px 0;
+        }
+
+        .strategy-label {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .strategy-content {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Conclusion */
+        .conclusion-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .conclusion-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #ccc;
+            margin-bottom: 60px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-item:hover {
+            background: rgba(0, 212, 255, 0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.2);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .unique-points {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 50px;
+            border-radius: 4px;
+            margin: 40px 0;
+            transition: all 0.3s ease;
+        }
+
+        .unique-points:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(0, 212, 255, 0.2);
+        }
+
+        .unique-points h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .unique-points ul {
+            list-style: none;
+        }
+
+        .unique-points li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            color: #aaa;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .unique-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            transition: transform 0.3s ease;
+        }
+
+        .unique-points li:hover {
+            color: #fff;
+            padding-left: 40px;
+        }
+
+        .unique-points li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #888;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-info p:hover {
+            color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        /* Navigation */
+        .nav-progress {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover::after {
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-dot:hover, .nav-dot.active {
+            background: #00d4ff;
+            transform: scale(1.4);
+        }
+
+        .nav-dot.active::after {
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: #00d4ff;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 60px 40px;
+            }
+
+            .debate-grid,
+            .competencies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dafo-grid,
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-progress {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title-main {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .debate-grid,
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-progress">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+    </div>
+
+    <div class="container">
+        <!-- Slide 1: Title -->
+        <section class="slide title-slide">
+            <div class="slide-number">01 / 06</div>
+            <div class="logo">&lt;DM/&gt;</div>
+            <h1 class="title-main">Desarrollo de Marca Profesional</h1>
+            <p class="title-sub">Tu Marca Profesional en el Mundo Tecnológico</p>
+            <div class="module-info">ITINERARIO PERSONAL PARA LA EMPLEABILIDAD II — DAW</div>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <!-- Slide 2: Debate - Company Requirements -->
+        <section class="slide">
+            <div class="slide-number">02 / 06</div>
+            <h2>¿Qué busca una empresa tecnológica?</h2>
+            <p class="debate-intro">
+                Análisis de las aptitudes y actitudes más valoradas en procesos de selección para desarrolladores web
+            </p>
+            <div class="debate-grid">
+                <div class="debate-card">
+                    <h4>Resolución de Problemas</h4>
+                    <p>Pensamiento analítico y capacidad para descomponer problemas complejos en soluciones técnicas eficientes y escalables.</p>
+                </div>
+                <div class="debate-card">
+                    <h4>Aprendizaje Continuo</h4>
+                    <p>Compromiso con la actualización constante de habilidades técnicas y conocimiento de tendencias emergentes en desarrollo web.</p>
+                </div>
+                <div class="debate-card">
+                    <h4>Comunicación Técnica</h4>
+                    <p>Habilidad para expresar conceptos técnicos complejos de manera clara tanto a equipos técnicos como a stakeholders no técnicos.</p>
+                </div>
+                <div class="debate-card">
+                    <h4>Mentalidad Proactiva</h4>
+                    <p>Iniciativa para identificar oportunidades de mejora, proponer soluciones innovadoras y asumir responsabilidad en los proyectos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: DAFO Analysis -->
+        <section class="slide">
+            <div class="slide-number">03 / 06</div>
+            <h2>Análisis DAFO del Equipo</h2>
+            <div class="dafo-grid">
+                <div class="dafo-section strengths">
+                    <h3>Fortalezas</h3>
+                    <ul>
+                        <li>Dominio avanzado de HTML5, CSS3 y JavaScript moderno (ES6+)</li>
+                        <li>Experiencia práctica con frameworks frontend: React, Vue.js</li>
+                        <li>Conocimiento aplicado de metodologías ágiles (Scrum, Kanban)</li>
+                        <li>Competencias sólidas en diseño UX/UI y principios de accesibilidad</li>
+                        <li>Experiencia demostrable en trabajo colaborativo con control de versiones (Git)</li>
+                        <li>Mentalidad orientada al aprendizaje continuo y actualización tecnológica</li>
+                        <li>Capacidad para implementar diseño responsive y mobile-first</li>
+                        <li>Conocimientos en bases de datos SQL y NoSQL</li>
+                    </ul>
+                </div>
+                <div class="dafo-section weaknesses">
+                    <h3>Debilidades</h3>
+                    <ul>
+                        <li>Experiencia profesional limitada en entornos empresariales reales</li>
+                        <li>Portfolio en fase de consolidación y crecimiento</li>
+                        <li>Red de contactos profesionales en desarrollo inicial</li>
+                        <li>Conocimientos intermedios en algunas tecnologías backend avanzadas</li>
+                        <li>Gestión de proyectos complejos con múltiples stakeholders en desarrollo</li>
+                        <li>Exposición limitada a arquitecturas de software escalables de gran envergadura</li>
+                        <li>Necesidad de fortalecer habilidades de presentación y pitch profesional</li>
+                    </ul>
+                </div>
+                <div class="dafo-section opportunities">
+                    <h3>Oportunidades</h3>
+                    <ul>
+                        <li>Alta demanda sostenida de desarrolladores web en el mercado laboral</li>
+                        <li>Crecimiento exponencial del trabajo remoto y modalidades híbridas</li>
+                        <li>Comunidad tech activa con eventos, meetups y oportunidades de networking</li>
+                        <li>Abundancia de recursos educativos y plataformas de formación continua</li>
+                        <li>Ecosistema de startups tecnológicas en expansión constante</li>
+                        <li>Programas de prácticas profesionales y talent acquisition en empresas tech</li>
+                        <li>Creciente valoración de perfiles junior con potencial de crecimiento</li>
+                        <li>Digitalización acelerada en todos los sectores empresariales</li>
+                    </ul>
+                </div>
+                <div class="dafo-section threats">
+                    <h3>Amenazas</h3>
+                    <ul>
+                        <li>Alta competencia en el segmento de desarrolladores junior</li>
+                        <li>Ritmo acelerado de obsolescencia tecnológica en herramientas y frameworks</li>
+                        <li>Requisitos crecientes de experiencia previa en procesos de selección</li>
+                        <li>Saturación en ciertos segmentos del mercado de desarrollo web</li>
+                        <li>Necesidad de especialización en nichos específicos para diferenciación</li>
+                        <li>Evolución constante de estándares y mejores prácticas del sector</li>
+                        <li>Automatización y herramientas low-code/no-code para tareas simples</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Value Proposition -->
+        <section class="slide">
+            <div class="slide-number">04 / 06</div>
+            <h2>Propuesta de Valor</h2>
+            <div class="value-box">
+                <h3>Qué nos diferencia como equipo de desarrollo DAW</h3>
+                <p class="value-text">
+                    Somos <strong>DevMasters</strong>, un equipo de desarrolladores web con una combinación distintiva de 
+                    <strong>competencia técnica</strong> y <strong>capacidad de innovación</strong>. Nos diferenciamos por nuestra 
+                    habilidad para <strong>asimilar rápidamente nuevas tecnologías</strong>, nuestro compromiso con 
+                    <strong>código limpio y mantenible</strong>, y nuestra experiencia práctica en <strong>metodologías ágiles</strong>. 
+                    Aportamos <strong>perspectivas frescas</strong>, <strong>soluciones creativas</strong> y un 
+                    <strong>compromiso inquebrantable</strong> con la excelencia técnica. No solo desarrollamos aplicaciones web, 
+                    diseñamos <strong>experiencias digitales eficientes</strong> que generan valor tangible para usuarios y negocio.
+                </p>
+            </div>
+
+            <div class="linkedin-profile">
+                <h4>Perfil Profesional LinkedIn</h4>
+                <p class="profile-header">Desarrolladores Web Full Stack | Especialistas Frontend | Certificados DAW</p>
+                <p>
+                    Equipo de desarrolladores especializados en la creación de soluciones web modernas, escalables y orientadas 
+                    a resultados. Experiencia técnica en React, Vue.js, Node.js y arquitecturas responsive. Formación completa 
+                    en Desarrollo de Aplicaciones Web con enfoque en metodologías ágiles, buenas prácticas de desarrollo y 
+                    principios SOLID. Comprometidos con el crecimiento profesional continuo y la excelencia en ingeniería de 
+                    software. Disponibles para colaborar en proyectos que impulsen la transformación digital y generen 
+                    impacto medible en organizaciones innovadoras.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 5: Brand Identity -->
+        <section class="slide">
+            <div class="slide-number">05 / 06</div>
+            <h2>Identidad de Marca y Competencias</h2>
+            <div class="brand-identity">
+                <div class="brand-logo-display">&lt;DM/&gt;</div>
+                <h3 class="brand-name">DevMasters</h3>
+                <p class="brand-tagline">Código con Propósito — Soluciones con Impacto</p>
+            </div>
+
+            <h3 style="text-align: center; margin-bottom: 40px;">Competencias Técnicas</h3>
+            <div class="competencies-grid">
+                <div class="competency-item">
+                    <h4>Frameworks Modernos</h4>
+                    <p>React, Vue.js, Angular</p>
+                </div>
+                <div class="competency-item">
+                    <h4>Desarrollo UI/UX</h4>
+                    <p>Diseño de Interfaces Intuitivas</p>
+                </div>
+                <div class="competency-item">
+                    <h4>Diseño Responsive</h4>
+                    <p>Enfoque Mobile-First</p>
+                </div>
+                <div class="competency-item">
+                    <h4>Optimización de Rendimiento</h4>
+                    <p>Performance Web Avanzado</p>
+                </div>
+                <div class="competency-item">
+                    <h4>Seguridad Web</h4>
+                    <p>Mejores Prácticas de Seguridad</p>
+                </div>
+                <div class="competency-item">
+                    <h4>Fundamentos DevOps</h4>
+                    <p>CI/CD y Control de Versiones</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 80px 0 40px;">Estrategia de Visibilidad Digital</h3>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h4>LinkedIn</h4>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Objetivo</div>
+                        <div class="strategy-content">Networking profesional y posicionamiento en la industria</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Estrategia</div>
+                        <div class="strategy-content">Perfil optimizado con palabras clave técnicas, publicación semanal de contenido, conexiones estratégicas con profesionales del sector</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Frecuencia</div>
+                        <div class="strategy-content">3 publicaciones por semana</div>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>GitHub</h4>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Objetivo</div>
+                        <div class="strategy-content">Portfolio técnico y showcase de código</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Estrategia</div>
+                        <div class="strategy-content">Repositorios públicos con proyectos destacados, documentación completa, contribuciones a proyectos open source</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Frecuencia</div>
+                        <div class="strategy-content">Commits diarios y actualizaciones semanales de proyectos</div>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Dev.to / Medium</h4>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Objetivo</div>
+                        <div class="strategy-content">Autoridad técnica y liderazgo de pensamiento</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Estrategia</div>
+                        <div class="strategy-content">Artículos técnicos, tutoriales de código, insights sobre desarrollo y experiencias de aprendizaje</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Frecuencia</div>
+                        <div class="strategy-content">2 artículos por mes</div>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Sitio Web Portfolio</h4>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Objetivo</div>
+                        <div class="strategy-content">Hub profesional centralizado</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Estrategia</div>
+                        <div class="strategy-content">Sitio web personal con proyectos destacados, blog técnico, testimonios y canales de contacto directo</div>
+                    </div>
+                    <div class="strategy-detail">
+                        <div class="strategy-label">Frecuencia</div>
+                        <div class="strategy-content">Actualizaciones mensuales de contenido</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Conclusion -->
+        <section class="slide">
+            <div class="slide-number">06 / 06</div>
+            <h2>Estrategia de Presentación Empresarial</h2>
+            <div class="conclusion-content">
+                <p class="conclusion-text">
+                    Como <strong>DevMasters</strong>, nos posicionamos como un equipo técnicamente sólido y estratégicamente versátil, 
+                    capaz de <strong>generar valor inmediato</strong> en proyectos tecnológicos de cualquier escala. Nuestra 
+                    <strong>orientación al crecimiento continuo</strong> nos permite adaptarnos eficientemente a nuevos desafíos, 
+                    mientras que nuestra <strong>experiencia en trabajo colaborativo</strong> garantiza una integración fluida 
+                    con estructuras organizativas existentes. Buscamos organizaciones que valoren la <strong>innovación técnica</strong>, 
+                    el <strong>desarrollo profesional</strong> y el <strong>impacto medible</strong> del desarrollo web.
+                </p>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">3-4</div>
+                        <div class="stat-label">Miembros del Equipo</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Compromiso Técnico</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Mentalidad de Crecimiento</div>
+                    </div>
+                </div>
+
+                <div class="unique-points">
+                    <h3>Diferenciadores Competitivos</h3>
+                    <ul>
+                        <li>Combinación equilibrada de <strong>competencias técnicas sólidas</strong> y <strong>soft skills profesionales</strong></li>
+                        <li>Enfoque sistemático en <strong>código limpio, testeable y documentado</strong></li>
+                        <li>Experiencia práctica en <strong>trabajo colaborativo</strong> con Git Flow y control de versiones</li>
+                        <li>Actitud <strong>proactiva</strong> y orientación a <strong>resultados medibles</strong></li>
+                        <li>Compromiso con la <strong>mejora continua</strong> y adopción de <strong>mejores prácticas del sector</strong></li>
+                        <li>Capacidad demostrada para <strong>aprender y adaptarse</strong> a nuevas tecnologías y metodologías</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <p>contacto@devmasters.tech</p>
+                    <p>linkedin.com/company/devmasters-daw</p>
+                    <p>github.com/devmasters-team</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Navigation dots functionality
+        const navDots = document.querySelectorAll('.nav-dot');
+        const slides = document.querySelectorAll('.slide');
+
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                slides[index].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Update active dot on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '-50px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(slides).indexOf(entry.target);
+                    navDots.forEach(dot => dot.classList.remove('active'));
+                    if (navDots[index]) {
+                        navDots[index].classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        slides.forEach(slide => observer.observe(slide));
+
+        // Add fade-in animation on scroll
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Apply fade-in to cards and sections
+        document.querySelectorAll('.debate-card, .dafo-section, .strategy-card, .competency-item, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            fadeInObserver.observe(el);
+        });
+
+        // Interactive hover effects with sound feedback (visual only)
+        const interactiveElements = document.querySelectorAll('.debate-card, .competency-item, .strategy-card, .stat-item');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+
+        // Click animation for interactive elements
+        document.querySelectorAll('.dafo-section').forEach(section => {
+            section.addEventListener('click', function() {
+                const items = this.querySelectorAll('li');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.animation = 'pulse 0.5s ease';
+                        setTimeout(() => {
+                            item.style.animation = '';
+                        }, 500);
+                    }, index * 100);
+                });
+            });
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.brand-logo-display, .logo');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Hide scroll indicator after first scroll
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator && window.pageYOffset > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            }
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentSlide = Array.from(slides).findIndex(slide => {
+                const rect = slide.getBoundingClientRect();
+                return rect.top >= 0 && rect.top < window.innerHeight / 2;
+            });
+
+            if (e.key === 'ArrowDown' && currentSlide < slides.length - 1) {
+                slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentSlide > 0) {
+                slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Interactive stats counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && statNumber.textContent !== '∞') {
+                        const finalValue = parseInt(statNumber.textContent);
+                        let currentValue = 0;
+                        const increment = finalValue / 50;
+                        
+                        const counter = setInterval(() => {
+                            currentValue += increment;
+                            if (currentValue >= finalValue) {
+                                statNumber.textContent = finalValue + (statNumber.textContent.includes('%') ? '%' : '');
+                                clearInterval(counter);
+                            } else {
+                                statNumber.textContent = Math.floor(currentValue) + (statNumber.textContent.includes('%') ? '%' : '');
+                            }
+                        }, 30);
+                    }
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-item').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+    </script>
+</body>
+</html>
+<div>
+                   
+         
+                </div>
+                <div class="debate-car
